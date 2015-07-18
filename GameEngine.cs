@@ -480,6 +480,11 @@ namespace clickerheroes.autoplayer
         static private Rectangle MoneyArea;
 
         /// <summary>
+        /// The area which contains the current DPS
+        /// </summary>
+        private static Rectangle DamagePerSecondArea;
+
+        /// <summary>
         /// The area which contains all visible heroes
         /// </summary>
         static private Rectangle HeroesArea;
@@ -805,6 +810,11 @@ namespace clickerheroes.autoplayer
             MoneyArea.Height = (int)(PlayableArea.Height * 0.090 + PlayableArea.Top) - MoneyArea.Y;
             MoneyArea.Width = (int)(PlayableArea.Width * 0.346 + PlayableArea.Left) - MoneyArea.X;
 
+            DamagePerSecondArea.X = (int)(PlayableArea.Width * 0.0158 + PlayableArea.Left);
+            DamagePerSecondArea.Y = (int)(PlayableArea.Height * 0.200 + PlayableArea.Top);
+            DamagePerSecondArea.Height = (int)(PlayableArea.Height * 0.232 + PlayableArea.Top) - DamagePerSecondArea.Y;
+            DamagePerSecondArea.Width = (int)(PlayableArea.Width * 0.089 + PlayableArea.Left) - DamagePerSecondArea.X;
+
             HeroesArea.X = (int)(PlayableArea.Width * 0.153 + PlayableArea.Left);
             HeroesArea.Y = (int)(PlayableArea.Height * 0.285 + PlayableArea.Top);
             HeroesArea.Height = (int)(PlayableArea.Height * 0.989 + PlayableArea.Top) - HeroesArea.Y;
@@ -1079,6 +1089,53 @@ namespace clickerheroes.autoplayer
 
                 return money;
             }
+        }
+
+        /// <summary>
+        /// Tries to get the current amount of money from the screen. Is slow.
+        /// </summary>
+        /// <returns></returns>
+        public static string GetDamagePerSecond()
+        {
+            Size s = DamagePerSecondArea.Size;
+            string dps = "";
+
+            using (Bitmap bitmap = GetImage(DamagePerSecondArea))
+            {
+                Color[] whiteColors = new Color[56];
+                for (int i = 200, j=0; i <= 255; i++,j++)
+                {
+                    whiteColors[j] = Color.FromArgb(255, i, i, i);
+                }
+
+                IEnumerable<Line> lines = OCREngine.OCRBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height), whiteColors);
+
+                using (LockBitmap lb = new LockBitmap(bitmap))
+                {
+                    if (lines.Count() != 0)
+                    {
+                        Rectangle playableArea = GameEngine.GetPlayableArea();
+                        lines.First().DoOcr(lb, playableArea.Height * playableArea.Width);
+                        try
+                        {
+                            //dps = Convert.ToDouble(lines.First().OcrString);
+                            dps = lines.First().OcrString;
+                        }
+                        catch (Exception)
+                        {
+                            // ignore
+                        }
+                    }
+                }
+
+                return dps;
+            }
+        }
+
+        public static Bitmap GetDamagePerSecondBMP()
+        {
+            return GetImage(DamagePerSecondArea);
+
         }
 
         /// <summary>

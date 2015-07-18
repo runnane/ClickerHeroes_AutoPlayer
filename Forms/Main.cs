@@ -110,6 +110,7 @@ namespace clickerheroes.autoplayer
 
             double money = GameEngine.GetMoney();
             ParsedHeroes ph = GameEngine.GetHeroes();
+            //string dps = GameEngine.GetDamagePerSecond();
 
             // Progressmode handling
             var progressMode = GameEngine.IsProgressModeOn();
@@ -175,6 +176,9 @@ namespace clickerheroes.autoplayer
             }
 
             lblCurrMoney.Text = money.ToString();
+           // lblCurrentDamagePerSecond.Text = dps.ToString();
+           // pictureBox1.Image = GameEngine.GetDamagePerSecondBMP();
+  
 
             if (Properties.Settings.Default.logging && DateTime.Now > TimeToNextLog)
             {

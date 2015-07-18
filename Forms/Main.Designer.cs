@@ -54,7 +54,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblProgressMode = new System.Windows.Forms.Label();
             this.lblProgressModeExtra = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblCurrentDamagePerSecond = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -260,12 +264,40 @@
             this.lblProgressModeExtra.TabIndex = 18;
             this.lblProgressModeExtra.Text = "n/a";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 172);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Current DPS";
+            // 
+            // lblCurrentDamagePerSecond
+            // 
+            this.lblCurrentDamagePerSecond.AutoSize = true;
+            this.lblCurrentDamagePerSecond.Location = new System.Drawing.Point(89, 172);
+            this.lblCurrentDamagePerSecond.Name = "lblCurrentDamagePerSecond";
+            this.lblCurrentDamagePerSecond.Size = new System.Drawing.Size(24, 13);
+            this.lblCurrentDamagePerSecond.TabIndex = 18;
+            this.lblCurrentDamagePerSecond.Text = "n/a";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(15, 199);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(251, 60);
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 543);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblMiscInfo);
+            this.Controls.Add(this.lblCurrentDamagePerSecond);
             this.Controls.Add(this.lblProgressModeExtra);
             this.Controls.Add(this.lblProgressMode);
             this.Controls.Add(this.lblCurrGoal);
@@ -273,6 +305,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txbLog);
@@ -292,6 +325,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,6 +357,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblProgressMode;
         private System.Windows.Forms.Label lblProgressModeExtra;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCurrentDamagePerSecond;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
