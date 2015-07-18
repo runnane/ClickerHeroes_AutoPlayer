@@ -110,7 +110,7 @@ namespace clickerheroes.autoplayer
                     var newTask = PlayerEngine.TryNextTask(ph, money);
                     if (newTask != lblCurrGoal.Text)
                     {
-                        txbLog.AppendText(Environment.NewLine + DateTime.Now.ToString("HH:mm:ss") + "[T]> " + newTask);
+                        txbLog.AppendText(Environment.NewLine + DateTime.Now.ToString("HH:mm:ss") + " [T]> " + newTask);
                         lblCurrGoal.Text = newTask;
 
                     }
@@ -154,11 +154,11 @@ namespace clickerheroes.autoplayer
                 }
                 TimeToNextLog = TimeToNextLog.AddMinutes(1);
                 imgsw.Stop();
-                label15.Text = string.Format("Image captured at {0} in {1} ms", DateTime.Now.ToString("hh:mm:ss"), imgsw.ElapsedMilliseconds);
+                lblOtherInfo.Text = string.Format("Image captured at {0} in {1} ms", DateTime.Now.ToString("HH:mm:ss"), imgsw.ElapsedMilliseconds);
             }
             else if (!Properties.Settings.Default.logging)
             {
-                label15.Text = "Logging turned off";
+                lblOtherInfo.Text = "Logging turned off";
             }
 
             t.Stop();
