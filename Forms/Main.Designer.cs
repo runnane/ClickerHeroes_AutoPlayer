@@ -51,14 +51,17 @@
             this.taskListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txbLog = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblProgressMode = new System.Windows.Forms.Label();
+            this.lblProgressModeExtra = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(11, 295);
+            this.button1.Location = new System.Drawing.Point(12, 454);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(305, 128);
+            this.button1.Size = new System.Drawing.Size(305, 77);
             this.button1.TabIndex = 0;
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
@@ -94,7 +97,7 @@
             // 
             // curHeroesTxt
             // 
-            this.curHeroesTxt.Location = new System.Drawing.Point(11, 166);
+            this.curHeroesTxt.Location = new System.Drawing.Point(12, 325);
             this.curHeroesTxt.Multiline = true;
             this.curHeroesTxt.Name = "curHeroesTxt";
             this.curHeroesTxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -141,7 +144,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 150);
+            this.label10.Location = new System.Drawing.Point(12, 309);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 13);
             this.label10.TabIndex = 16;
@@ -173,7 +176,7 @@
             // lblMiscInfo
             // 
             this.lblMiscInfo.AutoSize = true;
-            this.lblMiscInfo.Location = new System.Drawing.Point(8, 121);
+            this.lblMiscInfo.Location = new System.Drawing.Point(12, 286);
             this.lblMiscInfo.Name = "lblMiscInfo";
             this.lblMiscInfo.Size = new System.Drawing.Size(24, 13);
             this.lblMiscInfo.TabIndex = 20;
@@ -186,7 +189,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(734, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(727, 24);
             this.menuStrip1.TabIndex = 29;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -227,16 +230,46 @@
             this.txbLog.Multiline = true;
             this.txbLog.Name = "txbLog";
             this.txbLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txbLog.Size = new System.Drawing.Size(400, 397);
+            this.txbLog.Size = new System.Drawing.Size(400, 505);
             this.txbLog.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Progress mode";
+            // 
+            // lblProgressMode
+            // 
+            this.lblProgressMode.AutoSize = true;
+            this.lblProgressMode.Location = new System.Drawing.Point(90, 126);
+            this.lblProgressMode.Name = "lblProgressMode";
+            this.lblProgressMode.Size = new System.Drawing.Size(24, 13);
+            this.lblProgressMode.TabIndex = 18;
+            this.lblProgressMode.Text = "n/a";
+            // 
+            // lblProgressModeExtra
+            // 
+            this.lblProgressModeExtra.AutoSize = true;
+            this.lblProgressModeExtra.Location = new System.Drawing.Point(89, 151);
+            this.lblProgressModeExtra.Name = "lblProgressModeExtra";
+            this.lblProgressModeExtra.Size = new System.Drawing.Size(24, 13);
+            this.lblProgressModeExtra.TabIndex = 18;
+            this.lblProgressModeExtra.Text = "n/a";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 435);
+            this.ClientSize = new System.Drawing.Size(727, 543);
             this.Controls.Add(this.lblMiscInfo);
+            this.Controls.Add(this.lblProgressModeExtra);
+            this.Controls.Add(this.lblProgressMode);
             this.Controls.Add(this.lblCurrGoal);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
@@ -287,6 +320,9 @@
         private System.Windows.Forms.ToolStripMenuItem taskListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem otherToolStripMenuItem;
         private System.Windows.Forms.TextBox txbLog;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblProgressMode;
+        private System.Windows.Forms.Label lblProgressModeExtra;
     }
 }
 

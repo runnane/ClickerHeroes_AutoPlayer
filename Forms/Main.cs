@@ -31,7 +31,9 @@ namespace clickerheroes.autoplayer
         ClickerHeroesPosition clickerHeroesPositionForm = new ClickerHeroesPosition();
         TaskList taskListForm = new TaskList();
         OtherSettings otherSettingsForm = new OtherSettings();
-
+        private bool progressModeWas = false;
+        private DateTime lastProgressDisabled;
+ 
         private void button1_Click(object sender, EventArgs e)
         {
             ToggleAutoplayer(lblCursorPos.ForeColor == Color.FromArgb(255, 0, 0, 0) || lblCursorPos.ForeColor == Color.Black);
@@ -108,7 +110,42 @@ namespace clickerheroes.autoplayer
 
             double money = GameEngine.GetMoney();
             ParsedHeroes ph = GameEngine.GetHeroes();
+            var progressMode = GameEngine.IsProgressModeOn();
+            lblProgressMode.Text = progressMode?"ON":"OFF";
+            if (progressModeWas != progressMode)
+            {
+                AddLogMessage("A", "Progress mode was " + (progressMode ? "Enabled" : "Disabled"));
+                if (!progressMode)
+                {
+                    lastProgressDisabled = DateTime.Now;   
+                }
 
+                
+            }
+            progressModeWas = progressMode;
+            if (!progressMode)
+            {
+                var timeSinceDisabled = Math.Round(DateTime.Now.Subtract(lastProgressDisabled).TotalSeconds);
+                lblProgressModeExtra.Text = String.Format("Disabled since {0}s",
+                   timeSinceDisabled);
+
+                if (timeSinceDisabled > 120)
+                {
+                    // Two minutes since progress mode was disabled, we try again. (This should be a setting variable at some point)
+                    PlayerEngine.ToggleProgressMode();
+                    AddLogMessage("A", String.Format("Time since progress mode was disabled: {0}, enabling again", timeSinceDisabled));
+                }
+                
+
+            }
+            else
+            {
+                lblProgressModeExtra.Text = "";
+            }
+            
+            /*
+           
+            */
             if (ph != null)
             {
                 if (Properties.Settings.Default.useTaskList)

@@ -832,5 +832,13 @@ namespace clickerheroes.autoplayer
             AddAction(new Action(GameEngine.GetHeroTabButton(), 0));
         }
 
+        /// <summary>
+        /// Toggles the Progress mode
+        /// </summary>
+        public static void ToggleProgressMode()
+        {
+            AddAction(new Action(GameEngine.GetProgressButton(),0));
+        }
+
     }
 }
