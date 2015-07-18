@@ -34,7 +34,7 @@ namespace clickerheroes.autoplayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ToggleAutoplayer(label1.ForeColor == Color.FromArgb(255, 0, 0, 0) || label1.ForeColor == Color.Black);
+            ToggleAutoplayer(lblCursorPos.ForeColor == Color.FromArgb(255, 0, 0, 0) || lblCursorPos.ForeColor == Color.Black);
         }
 
         public void ToggleAutoplayer(bool state)
@@ -54,7 +54,7 @@ namespace clickerheroes.autoplayer
                 ClickerThread.CurrentUICulture = new CultureInfo("en-US");
             }
 
-            label1.ForeColor = state ? Color.Red : Color.Black;
+            lblCursorPos.ForeColor = state ? Color.Red : Color.Black;
             button1.Text = state ? "Stop ( CTRL + SHIFT + D )" : "Start";
             PlayerEngine.SetThreadActive(state ? 1 : 0);
             parsegame.Enabled = state;
@@ -91,7 +91,7 @@ namespace clickerheroes.autoplayer
             bool b = Imports.GetCursorPos(out lpPoint);
             if (b)
             {
-                label1.Text = string.Format("{0}, {1}", lpPoint.X, lpPoint.Y);
+                lblCursorPos.Text = string.Format("{0}, {1}", lpPoint.X, lpPoint.Y);
             }
         }
 
@@ -107,11 +107,18 @@ namespace clickerheroes.autoplayer
             {
                 if (Properties.Settings.Default.useTaskList)
                 {
-                    label14.Text = PlayerEngine.TryNextTask(ph, money);
+                    var newTask = PlayerEngine.TryNextTask(ph, money);
+                    if (newTask != lblCurrGoal.Text)
+                    {
+                        txbLog.AppendText(Environment.NewLine + DateTime.Now.ToString("HH:mm:ss") + "[T]> " + newTask);
+                        lblCurrGoal.Text = newTask;
+
+                    }
+                    
                 }
                 else
                 {
-                    label14.Text = "None, tasks turned off";
+                    lblCurrGoal.Text = "None, tasks turned off";
                 }
 
                 StringBuilder sb = new StringBuilder();
@@ -129,7 +136,7 @@ namespace clickerheroes.autoplayer
                 curHeroesTxt.Text = string.Empty;
             }
 
-            label9.Text = money.ToString();
+            lblCurrMoney.Text = money.ToString();
 
             if (Properties.Settings.Default.logging && DateTime.Now > TimeToNextLog)
             {
@@ -155,7 +162,7 @@ namespace clickerheroes.autoplayer
             }
 
             t.Stop();
-            label8.Text = string.Format("{0} ms", t.ElapsedMilliseconds);
+            lblParseTime.Text = string.Format("{0} ms", t.ElapsedMilliseconds);
         }
 
         class GlobalHotkey
@@ -204,7 +211,7 @@ namespace clickerheroes.autoplayer
 
         private void HandleHotkey()
         {
-            ToggleAutoplayer(label1.ForeColor == Color.FromArgb(255, 0, 0, 0) || label1.ForeColor == Color.Black);
+            ToggleAutoplayer(lblCursorPos.ForeColor == Color.FromArgb(255, 0, 0, 0) || lblCursorPos.ForeColor == Color.Black);
         }
 
         protected override void WndProc(ref Message m)
