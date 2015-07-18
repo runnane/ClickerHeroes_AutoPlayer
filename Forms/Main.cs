@@ -71,7 +71,7 @@ namespace clickerheroes.autoplayer
                      Directory.CreateDirectory(loggingDirectory);
                 }
 
-                currentLoggingString = DateTime.Now.ToString("MM-dd-yyyy HH mm ss");
+                currentLoggingString = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
                 Directory.CreateDirectory(string.Format("{0}\\{1}", loggingDirectory, currentLoggingString));
                 Directory.CreateDirectory(string.Format("{0}\\{1}\\screenshots", loggingDirectory, currentLoggingString));
                 sw = File.AppendText(string.Format("{0}\\{1}\\{1}.csv", loggingDirectory, currentLoggingString));
@@ -180,7 +180,7 @@ namespace clickerheroes.autoplayer
             {
                 Stopwatch imgsw = new Stopwatch();
                 imgsw.Start();
-                sw.WriteLine(string.Format("{0},{1}", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"), money));
+                sw.WriteLine(string.Format("{0},{1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), money));
 
                 Rectangle playableArea = GameEngine.GetPlayableArea();
                 using (Bitmap bitmap = new Bitmap(playableArea.Width, playableArea.Height)) {
@@ -192,7 +192,8 @@ namespace clickerheroes.autoplayer
                 }
                 TimeToNextLog = TimeToNextLog.AddMinutes(1);
                 imgsw.Stop();
-                lblMiscInfo.Text = string.Format("Image captured and saved at {0} in {1} ms", DateTime.Now.ToString("HH:mm:ss"), imgsw.ElapsedMilliseconds);
+                AddLogMessage("I",string.Format("Screenshot & log @ {0} in {1} ms", DateTime.Now.ToString("HH:mm:ss"), imgsw.ElapsedMilliseconds));
+
             }
             else if (!Properties.Settings.Default.logging)
             {
