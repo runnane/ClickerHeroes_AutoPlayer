@@ -110,6 +110,8 @@ namespace clickerheroes.autoplayer
 
             double money = GameEngine.GetMoney();
             ParsedHeroes ph = GameEngine.GetHeroes();
+
+            // Progressmode handling
             var progressMode = GameEngine.IsProgressModeOn();
             lblProgressMode.Text = progressMode?"ON":"OFF";
             if (progressModeWas != progressMode)
@@ -119,8 +121,6 @@ namespace clickerheroes.autoplayer
                 {
                     lastProgressDisabled = DateTime.Now;   
                 }
-
-                
             }
             progressModeWas = progressMode;
             if (!progressMode)
@@ -135,17 +135,13 @@ namespace clickerheroes.autoplayer
                     PlayerEngine.ToggleProgressMode();
                     AddLogMessage("A", String.Format("Time since progress mode was disabled: {0}, enabling again", timeSinceDisabled));
                 }
-                
-
             }
             else
             {
                 lblProgressModeExtra.Text = "";
             }
-            
-            /*
-           
-            */
+
+  
             if (ph != null)
             {
                 if (Properties.Settings.Default.useTaskList)
@@ -192,11 +188,11 @@ namespace clickerheroes.autoplayer
                         g.CopyFromScreen(new Point(playableArea.Left, playableArea.Top), Point.Empty, playableArea.Size);
                     }
 
-                    bitmap.Save(string.Format("{0}\\{1}\\screenshots\\{2}.png", loggingDirectory, currentLoggingString, DateTime.Now.ToString("MM-dd-yyyy HH mm ss")));
+                    bitmap.Save(string.Format("{0}\\{1}\\screenshots\\{2}.png", loggingDirectory, currentLoggingString, DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss")));
                 }
                 TimeToNextLog = TimeToNextLog.AddMinutes(1);
                 imgsw.Stop();
-                lblMiscInfo.Text = string.Format("Image captured at {0} in {1} ms", DateTime.Now.ToString("HH:mm:ss"), imgsw.ElapsedMilliseconds);
+                lblMiscInfo.Text = string.Format("Image captured and saved at {0} in {1} ms", DateTime.Now.ToString("HH:mm:ss"), imgsw.ElapsedMilliseconds);
             }
             else if (!Properties.Settings.Default.logging)
             {
