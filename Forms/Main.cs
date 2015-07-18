@@ -95,6 +95,12 @@ namespace clickerheroes.autoplayer
             }
         }
 
+        private void AddLogMessage(string type, string text)
+        {
+            txbLog.AppendText(String.Format("{0}{1} [{2}]> {3}", Environment.NewLine, DateTime.Now.ToString("HH:mm:ss"),
+                type, text));
+        }
+
         private void clickyclicky_Tick(object sender, EventArgs e)
         {
             Stopwatch t = new Stopwatch();
@@ -110,9 +116,8 @@ namespace clickerheroes.autoplayer
                     var newTask = PlayerEngine.TryNextTask(ph, money);
                     if (newTask != lblCurrGoal.Text)
                     {
-                        txbLog.AppendText(Environment.NewLine + DateTime.Now.ToString("HH:mm:ss") + " [T]> " + newTask);
+                        AddLogMessage("T", newTask);
                         lblCurrGoal.Text = newTask;
-
                     }
                     
                 }
@@ -154,11 +159,11 @@ namespace clickerheroes.autoplayer
                 }
                 TimeToNextLog = TimeToNextLog.AddMinutes(1);
                 imgsw.Stop();
-                lblOtherInfo.Text = string.Format("Image captured at {0} in {1} ms", DateTime.Now.ToString("HH:mm:ss"), imgsw.ElapsedMilliseconds);
+                lblMiscInfo.Text = string.Format("Image captured at {0} in {1} ms", DateTime.Now.ToString("HH:mm:ss"), imgsw.ElapsedMilliseconds);
             }
             else if (!Properties.Settings.Default.logging)
             {
-                lblOtherInfo.Text = "Logging turned off";
+                lblMiscInfo.Text = "Logging turned off";
             }
 
             t.Stop();

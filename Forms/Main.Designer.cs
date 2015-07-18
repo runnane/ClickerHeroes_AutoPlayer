@@ -44,7 +44,7 @@
             this.useskills = new System.Windows.Forms.Timer(this.components);
             this.label13 = new System.Windows.Forms.Label();
             this.lblCurrGoal = new System.Windows.Forms.Label();
-            this.lblOtherInfo = new System.Windows.Forms.Label();
+            this.lblMiscInfo = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.clickerHeroesPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -170,14 +170,14 @@
             this.lblCurrGoal.TabIndex = 18;
             this.lblCurrGoal.Text = "n/a";
             // 
-            // lblOtherInfo
+            // lblMiscInfo
             // 
-            this.lblOtherInfo.AutoSize = true;
-            this.lblOtherInfo.Location = new System.Drawing.Point(8, 121);
-            this.lblOtherInfo.Name = "lblOtherInfo";
-            this.lblOtherInfo.Size = new System.Drawing.Size(24, 13);
-            this.lblOtherInfo.TabIndex = 20;
-            this.lblOtherInfo.Text = "n/a";
+            this.lblMiscInfo.AutoSize = true;
+            this.lblMiscInfo.Location = new System.Drawing.Point(8, 121);
+            this.lblMiscInfo.Name = "lblMiscInfo";
+            this.lblMiscInfo.Size = new System.Drawing.Size(24, 13);
+            this.lblMiscInfo.TabIndex = 20;
+            this.lblMiscInfo.Text = "n/a";
             // 
             // menuStrip1
             // 
@@ -235,7 +235,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 435);
-            this.Controls.Add(this.lblOtherInfo);
+            this.Controls.Add(this.lblMiscInfo);
             this.Controls.Add(this.lblCurrGoal);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label10);
@@ -280,7 +280,7 @@
         private System.Windows.Forms.Timer useskills;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblCurrGoal;
-        private System.Windows.Forms.Label lblOtherInfo;
+        private System.Windows.Forms.Label lblMiscInfo;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clickerHeroesPositionToolStripMenuItem;
