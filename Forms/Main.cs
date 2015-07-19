@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tesseract;
 
 namespace clickerheroes.autoplayer
 {
@@ -106,6 +107,7 @@ namespace clickerheroes.autoplayer
         private void clickyclicky_Tick(object sender, EventArgs e)
         {
             Stopwatch t = new Stopwatch();
+            Stopwatch t2 = new Stopwatch();
             t.Start();
 
             double money = GameEngine.GetMoney();
@@ -177,9 +179,30 @@ namespace clickerheroes.autoplayer
 
             lblCurrMoney.Text = money.ToString();
             //lblCurrentDamagePerSecond.Text = dps.ToString();
-            //pictureBox1.Image = GameEngine.GetDamagePerSecondBMP();
-  
+            t2.Start();
+            var img = GameEngine.GetDamagePerSecondBMP();
+            pictureBox1.Image = img;
 
+
+            using (var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
+            {
+                engine.SetVariable("tessedit_char_whitelist", "1234567890e.");
+                Page page = engine.Process(img);
+                var dps = page.GetText().Trim().Replace(" ",string.Empty);
+
+                var dpsstr = "Raw='"+dps+"'";
+                try
+                {
+                    dpsstr += " OCR='" +  Convert.ToDouble(dps) + "'";
+                }
+                catch (Exception)
+                {
+
+                    dpsstr += " (Exception)";
+                }
+                lblCurrentDamagePerSecond.Text = dpsstr;
+            }
+            t2.Stop();
             if (Properties.Settings.Default.logging && DateTime.Now > TimeToNextLog)
             {
                 Stopwatch imgsw = new Stopwatch();
@@ -205,7 +228,7 @@ namespace clickerheroes.autoplayer
             }
 
             t.Stop();
-            lblParseTime.Text = string.Format("{0} ms", t.ElapsedMilliseconds);
+            lblParseTime.Text = string.Format("{0} ms (DPS={1})", t.ElapsedMilliseconds, t2.ElapsedMilliseconds);
         }
 
         class GlobalHotkey

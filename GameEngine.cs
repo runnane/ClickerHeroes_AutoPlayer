@@ -1113,7 +1113,7 @@ namespace clickerheroes.autoplayer
         //        {
         //            using (LockBitmap lb = new LockBitmap(bitmap))
         //            {
-                   
+
         //                Rectangle playableArea = GameEngine.GetPlayableArea();
         //                lines.First().DoOcr(lb, playableArea.Height * playableArea.Width);
         //                try
@@ -1132,27 +1132,28 @@ namespace clickerheroes.autoplayer
         //    }
         //}
 
-        //public static Bitmap GetDamagePerSecondBMP()
-        //{
-        //    Bitmap bitmap = GetImage(DamagePerSecondArea);
-        //    Bitmap resizedBitmap = new Bitmap(bitmap, new Size((int) (bitmap.Width * 2), (int) (bitmap.Height * 2)));
-        //   // return resizedBitmap;
-        //    Bitmap newBitmap = new Bitmap(resizedBitmap.Width, resizedBitmap.Height);
-        //    var newColor = Color.FromArgb(255, 254, 254, 254);
-        //    var white = Color.DeepPink;
-        //    for (int i = 0; i < resizedBitmap.Width; i++)
-        //    {
-        //        for (int j = 0; j < resizedBitmap.Height; j++)
-        //        {
-        //            var actulaColor = resizedBitmap.GetPixel(i, j);
-        //            if (actulaColor.R > 220)
-        //                newBitmap.SetPixel(i, j, newColor);
-        //            else
-        //                newBitmap.SetPixel(i, j, white);
-        //        }
-        //    }
-        //    return newBitmap;
-        //}
+        public static Bitmap GetDamagePerSecondBMP()
+        {
+            //return GetImage(DamagePerSecondArea);
+            Bitmap bitmap = GetImage(DamagePerSecondArea);
+            Bitmap resizedBitmap = new Bitmap(bitmap, new Size((int)(bitmap.Width * 2), (int)(bitmap.Height * 2)));
+            //return resizedBitmap;
+            Bitmap newBitmap = new Bitmap(resizedBitmap.Width, resizedBitmap.Height);
+            var newColor = Color.Black;
+            var white = Color.White;
+            for (int i = 0; i < resizedBitmap.Width; i++)
+            {
+                for (int j = 0; j < resizedBitmap.Height; j++)
+                {
+                    var actulaColor = resizedBitmap.GetPixel(i, j);
+                    if (actulaColor.R > 240)
+                        newBitmap.SetPixel(i, j, newColor);
+                    else
+                        newBitmap.SetPixel(i, j, white);
+                }
+            }
+            return newBitmap;
+        }
 
         /// <summary>
         /// Tries to parse all heroes on screen. Is null if there is crap on the screen preventing the heros from being parsed. Is very slow.
