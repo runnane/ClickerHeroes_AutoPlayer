@@ -26,6 +26,8 @@ namespace clickerheroes.autoplayer
             dogcogTxt.Text = Properties.Settings.Default.dogcog.ToString();
             maxRunDurationTxt.Text = Properties.Settings.Default.maxRunDuration.ToString();
             maxRunDurationTxt.Enabled = Properties.Settings.Default.useTaskList;
+            txtReenableProgressDelay.Text = Properties.Settings.Default.enableProgressDelay.ToString();
+            chkAutoEnableProgress.Checked = Properties.Settings.Default.autoEnableProgress;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -56,6 +58,19 @@ namespace clickerheroes.autoplayer
                 return;
             }
 
+            int reenableDelay;
+
+            if (int.TryParse(txtReenableProgressDelay.Text, out reenableDelay) && reenableDelay >= 0)
+            {
+                Properties.Settings.Default.enableProgressDelay = reenableDelay;
+            }
+            else
+            {
+                MessageBox.Show("Delay for re-enabling progress mode should be a number >=0");
+                return;
+            }
+
+            Properties.Settings.Default.autoEnableProgress = chkAutoEnableProgress.Checked;
             Properties.Settings.Default.useTaskList = tasklistChk.Checked;
             Properties.Settings.Default.autoSkill = skillChk.Checked;
             Properties.Settings.Default.autoClicking = clickingChk.Checked;

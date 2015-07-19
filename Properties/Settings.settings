@@ -14,6 +14,24 @@
     <Setting Name="right" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1516</Value>
     </Setting>
+    <Setting Name="useTaskList" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="autoSkill" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="autoClicking" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="logging" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="dogcog" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="maxRunDuration" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">55</Value>
+    </Setting>
     <Setting Name="taskList" Type="System.String" Scope="User">
       <Value Profile="(Default)">//Start the game idle
 Idle
@@ -62,23 +80,14 @@ Active
 // This should always be the last task
 Ascend</Value>
     </Setting>
-    <Setting Name="useTaskList" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="autoEnableProgress" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="autoSkill" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="enableProgressDelay" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">120</Value>
     </Setting>
-    <Setting Name="autoClicking" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="logging" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="dogcog" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">25</Value>
-    </Setting>
-    <Setting Name="maxRunDuration" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">55</Value>
+    <Setting Name="backgroundWindow" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

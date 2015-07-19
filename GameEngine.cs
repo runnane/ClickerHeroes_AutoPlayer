@@ -1091,52 +1091,68 @@ namespace clickerheroes.autoplayer
             }
         }
 
-        /// <summary>
-        /// Tries to get the current amount of money from the screen. Is slow.
-        /// </summary>
-        /// <returns></returns>
-        public static string GetDamagePerSecond()
-        {
-            Size s = DamagePerSecondArea.Size;
-            string dps = "";
+        ///// <summary>
+        ///// Tries to get the current amount of money from the screen. Is slow.
+        ///// </summary>
+        ///// <returns></returns>
+        //public static string GetDamagePerSecond()
+        //{
+        //    Size s = DamagePerSecondArea.Size;
+        //    string dps = "";
 
-            using (Bitmap bitmap = GetImage(DamagePerSecondArea))
-            {
-                Color[] whiteColors = new Color[56];
-                for (int i = 200, j=0; i <= 255; i++,j++)
-                {
-                    whiteColors[j] = Color.FromArgb(255, i, i, i);
-                }
+        //    using (Bitmap bitmap = GetDamagePerSecondBMP())
+        //    {
+        //        IEnumerable<Line> lines = OCREngine.OCRBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+        //            new Color[]
+        //            {
+        //                Color.FromArgb(255, 254, 254, 254),
+        //                Color.FromArgb(255, 254, 254, 253)
+        //            });
 
-                IEnumerable<Line> lines = OCREngine.OCRBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height), whiteColors);
+        //        if (lines.Count() != 0)
+        //        {
+        //            using (LockBitmap lb = new LockBitmap(bitmap))
+        //            {
+                   
+        //                Rectangle playableArea = GameEngine.GetPlayableArea();
+        //                lines.First().DoOcr(lb, playableArea.Height * playableArea.Width);
+        //                try
+        //                {
+        //                    //dps = Convert.ToDouble(lines.First().OcrString);
+        //                    dps = lines.First().OcrString;
+        //                }
+        //                catch (Exception)
+        //                {
+        //                    // ignore
+        //                }
+        //            }
+        //        }
 
-                using (LockBitmap lb = new LockBitmap(bitmap))
-                {
-                    if (lines.Count() != 0)
-                    {
-                        Rectangle playableArea = GameEngine.GetPlayableArea();
-                        lines.First().DoOcr(lb, playableArea.Height * playableArea.Width);
-                        try
-                        {
-                            //dps = Convert.ToDouble(lines.First().OcrString);
-                            dps = lines.First().OcrString;
-                        }
-                        catch (Exception)
-                        {
-                            // ignore
-                        }
-                    }
-                }
+        //        return dps;
+        //    }
+        //}
 
-                return dps;
-            }
-        }
-
-        public static Bitmap GetDamagePerSecondBMP()
-        {
-            return GetImage(DamagePerSecondArea);
-
-        }
+        //public static Bitmap GetDamagePerSecondBMP()
+        //{
+        //    Bitmap bitmap = GetImage(DamagePerSecondArea);
+        //    Bitmap resizedBitmap = new Bitmap(bitmap, new Size((int) (bitmap.Width * 2), (int) (bitmap.Height * 2)));
+        //   // return resizedBitmap;
+        //    Bitmap newBitmap = new Bitmap(resizedBitmap.Width, resizedBitmap.Height);
+        //    var newColor = Color.FromArgb(255, 254, 254, 254);
+        //    var white = Color.DeepPink;
+        //    for (int i = 0; i < resizedBitmap.Width; i++)
+        //    {
+        //        for (int j = 0; j < resizedBitmap.Height; j++)
+        //        {
+        //            var actulaColor = resizedBitmap.GetPixel(i, j);
+        //            if (actulaColor.R > 220)
+        //                newBitmap.SetPixel(i, j, newColor);
+        //            else
+        //                newBitmap.SetPixel(i, j, white);
+        //        }
+        //    }
+        //    return newBitmap;
+        //}
 
         /// <summary>
         /// Tries to parse all heroes on screen. Is null if there is crap on the screen preventing the heros from being parsed. Is very slow.

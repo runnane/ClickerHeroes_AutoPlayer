@@ -124,15 +124,15 @@ namespace clickerheroes.autoplayer
                 }
             }
             progressModeWas = progressMode;
-            if (!progressMode)
+            if (!progressMode && Properties.Settings.Default.autoEnableProgress)
             {
                 var timeSinceDisabled = Math.Round(DateTime.Now.Subtract(lastProgressDisabled).TotalSeconds);
-                lblProgressModeExtra.Text = String.Format("Disabled since {0}s",
-                   timeSinceDisabled);
 
-                if (timeSinceDisabled > 120)
+                lblProgressModeExtra.Text = String.Format("Disabled for {0}s, enabling in {1}s",
+                   timeSinceDisabled, (Properties.Settings.Default.enableProgressDelay- timeSinceDisabled));
+
+                if (timeSinceDisabled > Properties.Settings.Default.enableProgressDelay)
                 {
-                    // Two minutes since progress mode was disabled, we try again. (This should be a setting variable at some point)
                     PlayerEngine.ToggleProgressMode();
                     AddLogMessage("A", String.Format("Time since progress mode was disabled: {0}, enabling again", timeSinceDisabled));
                 }
@@ -176,8 +176,8 @@ namespace clickerheroes.autoplayer
             }
 
             lblCurrMoney.Text = money.ToString();
-           // lblCurrentDamagePerSecond.Text = dps.ToString();
-           // pictureBox1.Image = GameEngine.GetDamagePerSecondBMP();
+            //lblCurrentDamagePerSecond.Text = dps.ToString();
+            //pictureBox1.Image = GameEngine.GetDamagePerSecondBMP();
   
 
             if (Properties.Settings.Default.logging && DateTime.Now > TimeToNextLog)

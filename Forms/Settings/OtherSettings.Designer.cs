@@ -38,14 +38,18 @@
             this.saveBtn = new System.Windows.Forms.Button();
             this.maxRunDurationTxt = new System.Windows.Forms.TextBox();
             this.maxRunDurationLbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtReenableProgressDelay = new System.Windows.Forms.TextBox();
+            this.chkAutoEnableProgress = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // loggingChk
             // 
             this.loggingChk.AutoSize = true;
-            this.loggingChk.Location = new System.Drawing.Point(12, 81);
+            this.loggingChk.Location = new System.Drawing.Point(16, 100);
+            this.loggingChk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.loggingChk.Name = "loggingChk";
-            this.loggingChk.Size = new System.Drawing.Size(77, 17);
+            this.loggingChk.Size = new System.Drawing.Size(98, 21);
             this.loggingChk.TabIndex = 29;
             this.loggingChk.Text = "Log output";
             this.loggingChk.UseVisualStyleBackColor = true;
@@ -53,35 +57,39 @@
             // clickingChk
             // 
             this.clickingChk.AutoSize = true;
-            this.clickingChk.Location = new System.Drawing.Point(12, 58);
+            this.clickingChk.Location = new System.Drawing.Point(16, 71);
+            this.clickingChk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.clickingChk.Name = "clickingChk";
-            this.clickingChk.Size = new System.Drawing.Size(87, 17);
+            this.clickingChk.Size = new System.Drawing.Size(109, 21);
             this.clickingChk.TabIndex = 28;
             this.clickingChk.Text = "Auto clicking";
             this.clickingChk.UseVisualStyleBackColor = true;
             // 
             // dogcogTxt
             // 
-            this.dogcogTxt.Location = new System.Drawing.Point(12, 104);
+            this.dogcogTxt.Location = new System.Drawing.Point(16, 128);
+            this.dogcogTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dogcogTxt.Name = "dogcogTxt";
-            this.dogcogTxt.Size = new System.Drawing.Size(20, 20);
+            this.dogcogTxt.Size = new System.Drawing.Size(25, 22);
             this.dogcogTxt.TabIndex = 27;
             // 
             // dogcogLbl
             // 
             this.dogcogLbl.AutoSize = true;
-            this.dogcogLbl.Location = new System.Drawing.Point(34, 107);
+            this.dogcogLbl.Location = new System.Drawing.Point(45, 132);
+            this.dogcogLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dogcogLbl.Name = "dogcogLbl";
-            this.dogcogLbl.Size = new System.Drawing.Size(70, 13);
+            this.dogcogLbl.Size = new System.Drawing.Size(90, 17);
             this.dogcogLbl.TabIndex = 26;
             this.dogcogLbl.Text = "Dogcog level";
             // 
             // skillChk
             // 
             this.skillChk.AutoSize = true;
-            this.skillChk.Location = new System.Drawing.Point(12, 35);
+            this.skillChk.Location = new System.Drawing.Point(16, 43);
+            this.skillChk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.skillChk.Name = "skillChk";
-            this.skillChk.Size = new System.Drawing.Size(100, 17);
+            this.skillChk.Size = new System.Drawing.Size(129, 21);
             this.skillChk.TabIndex = 30;
             this.skillChk.Text = "Auto skill usage";
             this.skillChk.UseVisualStyleBackColor = true;
@@ -89,9 +97,10 @@
             // tasklistChk
             // 
             this.tasklistChk.AutoSize = true;
-            this.tasklistChk.Location = new System.Drawing.Point(12, 12);
+            this.tasklistChk.Location = new System.Drawing.Point(16, 15);
+            this.tasklistChk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tasklistChk.Name = "tasklistChk";
-            this.tasklistChk.Size = new System.Drawing.Size(91, 17);
+            this.tasklistChk.Size = new System.Drawing.Size(116, 21);
             this.tasklistChk.TabIndex = 31;
             this.tasklistChk.Text = "Follow tasklist";
             this.tasklistChk.UseVisualStyleBackColor = true;
@@ -99,9 +108,10 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(45, 157);
+            this.saveBtn.Location = new System.Drawing.Point(59, 252);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveBtn.Size = new System.Drawing.Size(100, 28);
             this.saveBtn.TabIndex = 32;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
@@ -109,37 +119,72 @@
             // 
             // maxRunDurationTxt
             // 
-            this.maxRunDurationTxt.Location = new System.Drawing.Point(12, 130);
+            this.maxRunDurationTxt.Location = new System.Drawing.Point(16, 160);
+            this.maxRunDurationTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.maxRunDurationTxt.Name = "maxRunDurationTxt";
-            this.maxRunDurationTxt.Size = new System.Drawing.Size(20, 20);
+            this.maxRunDurationTxt.Size = new System.Drawing.Size(25, 22);
             this.maxRunDurationTxt.TabIndex = 34;
             // 
             // maxRunDurationLbl
             // 
             this.maxRunDurationLbl.AutoSize = true;
-            this.maxRunDurationLbl.Location = new System.Drawing.Point(34, 133);
+            this.maxRunDurationLbl.Location = new System.Drawing.Point(45, 164);
+            this.maxRunDurationLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.maxRunDurationLbl.Name = "maxRunDurationLbl";
-            this.maxRunDurationLbl.Size = new System.Drawing.Size(86, 13);
+            this.maxRunDurationLbl.Size = new System.Drawing.Size(114, 17);
             this.maxRunDurationLbl.TabIndex = 33;
             this.maxRunDurationLbl.Text = "Max run duration";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(45, 222);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(174, 17);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Reenable delay (seconds)";
+            // 
+            // txtReenableProgressDelay
+            // 
+            this.txtReenableProgressDelay.Location = new System.Drawing.Point(16, 218);
+            this.txtReenableProgressDelay.Margin = new System.Windows.Forms.Padding(4);
+            this.txtReenableProgressDelay.Name = "txtReenableProgressDelay";
+            this.txtReenableProgressDelay.Size = new System.Drawing.Size(25, 22);
+            this.txtReenableProgressDelay.TabIndex = 27;
+            // 
+            // chkAutoEnableProgress
+            // 
+            this.chkAutoEnableProgress.AutoSize = true;
+            this.chkAutoEnableProgress.Location = new System.Drawing.Point(16, 190);
+            this.chkAutoEnableProgress.Margin = new System.Windows.Forms.Padding(4);
+            this.chkAutoEnableProgress.Name = "chkAutoEnableProgress";
+            this.chkAutoEnableProgress.Size = new System.Drawing.Size(205, 21);
+            this.chkAutoEnableProgress.TabIndex = 29;
+            this.chkAutoEnableProgress.Text = "Auto enable progress mode";
+            this.chkAutoEnableProgress.UseVisualStyleBackColor = true;
+            // 
             // OtherSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(167, 189);
+            this.ClientSize = new System.Drawing.Size(225, 291);
             this.Controls.Add(this.maxRunDurationTxt);
             this.Controls.Add(this.maxRunDurationLbl);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.tasklistChk);
             this.Controls.Add(this.skillChk);
+            this.Controls.Add(this.chkAutoEnableProgress);
             this.Controls.Add(this.loggingChk);
+            this.Controls.Add(this.txtReenableProgressDelay);
             this.Controls.Add(this.clickingChk);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dogcogTxt);
             this.Controls.Add(this.dogcogLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "OtherSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -161,5 +206,8 @@
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.TextBox maxRunDurationTxt;
         private System.Windows.Forms.Label maxRunDurationLbl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtReenableProgressDelay;
+        private System.Windows.Forms.CheckBox chkAutoEnableProgress;
     }
 }
