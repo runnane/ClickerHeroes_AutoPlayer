@@ -112,9 +112,18 @@ namespace clickerheroes.autoplayer
             ParsedHeroes ph = GameEngine.GetHeroes();
             //string dps = GameEngine.GetDamagePerSecond();
 
+            // ooze
+            var oozePopupActive = GameEngine.IsRelicOozePopupActive();
+            lblIsOozeActive.Text = oozePopupActive?"YES":"NO";
+            if (oozePopupActive)
+            {
+                AddLogMessage("A", "Ooze popup is active, trying to close");
+                PlayerEngine.TryCloseOozePopup();
+            }
+ 
             // Progressmode handling
             var progressMode = GameEngine.IsProgressModeOn();
-            lblProgressMode.Text = progressMode?"ON":"OFF";
+             lblProgressMode.Text = progressMode?"ON":"OFF";
             if (progressModeWas != progressMode)
             {
                 AddLogMessage("A", "Progress mode was " + (progressMode ? "Enabled" : "Disabled"));

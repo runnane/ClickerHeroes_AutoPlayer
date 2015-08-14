@@ -57,6 +57,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblCurrentDamagePerSecond = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblIsOozeActive = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -284,11 +286,29 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(15, 199);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 223);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(251, 60);
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 194);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Ooze";
+            // 
+            // lblIsOozeActive
+            // 
+            this.lblIsOozeActive.AutoSize = true;
+            this.lblIsOozeActive.Location = new System.Drawing.Point(90, 194);
+            this.lblIsOozeActive.Name = "lblIsOozeActive";
+            this.lblIsOozeActive.Size = new System.Drawing.Size(24, 13);
+            this.lblIsOozeActive.TabIndex = 18;
+            this.lblIsOozeActive.Text = "n/a";
             // 
             // Main
             // 
@@ -297,6 +317,7 @@
             this.ClientSize = new System.Drawing.Size(727, 543);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblMiscInfo);
+            this.Controls.Add(this.lblIsOozeActive);
             this.Controls.Add(this.lblCurrentDamagePerSecond);
             this.Controls.Add(this.lblProgressModeExtra);
             this.Controls.Add(this.lblProgressMode);
@@ -305,6 +326,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -360,6 +382,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblCurrentDamagePerSecond;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblIsOozeActive;
     }
 }
 

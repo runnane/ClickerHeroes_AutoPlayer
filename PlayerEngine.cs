@@ -840,5 +840,10 @@ namespace clickerheroes.autoplayer
             AddAction(new Action(GameEngine.GetProgressButton(),0));
         }
 
+        public static void TryCloseOozePopup()
+        {
+            AddAction(new Action(GameEngine.GetRelicOozePopupButton1(), 0));
+            AddAction(new Action(GameEngine.GetRelicOozePopupButton2(), 0));
+        }
     }
 }

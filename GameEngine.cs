@@ -634,6 +634,24 @@ namespace clickerheroes.autoplayer
         /// The location of the move zone right button
         /// </summary>
         static private Point MoveZoneRightButton;
+
+        /// <summary>
+        /// The location of the blue O in relic ooze popup
+        /// </summary>
+        static private Point RelicOozeIdentifier;
+
+        /// <summary>
+        /// The relic ooze spawn popup center button
+        /// </summary>
+        static private Point RelicOozePopupButton1;
+
+        /// <summary>
+        /// The relic ooze spawn popup close button
+        /// </summary>
+        static private Point RelicOozePopupButton2;
+
+
+        
         #endregion
 
         #region GameEngineGetters
@@ -791,6 +809,20 @@ namespace clickerheroes.autoplayer
         {
             return MoveZoneRightButton;
         }
+
+        public static Point GetRelicOozeIdentifier()
+        {
+            return RelicOozeIdentifier;
+        }
+
+        public static Point GetRelicOozePopupButton1()
+        {
+            return RelicOozePopupButton1;
+        }
+        public static Point GetRelicOozePopupButton2()
+        {
+            return RelicOozePopupButton2;
+        }
         #endregion
 
         /// <summary>
@@ -910,11 +942,21 @@ namespace clickerheroes.autoplayer
             MoveZoneRightButton.X = (int)(PlayableArea.Width * 0.8044 + PlayableArea.Left);
             MoveZoneRightButton.Y = (int)(PlayableArea.Height * 0.0568 + PlayableArea.Top);
 
-            //Check for Steam window
-            //Background functionality works with Steam window
-            //Still seems to be a few issues - if you move the window after detecting it,
-            //it throws an OutOfMemory error
-            WindowHandle = Imports.FindWindow(null, "Clicker Heroes");
+            RelicOozeIdentifier.X = (int)(PlayableArea.Width * 0.4357 + PlayableArea.Left);
+            RelicOozeIdentifier.Y = (int)(PlayableArea.Height * 0.2484 + PlayableArea.Top);
+
+            RelicOozePopupButton1.X = (int)(PlayableArea.Width * 0.8045 + PlayableArea.Left);
+            RelicOozePopupButton1.Y = (int)(PlayableArea.Height * 0.1619 + PlayableArea.Top);
+
+            RelicOozePopupButton2.X = (int)(PlayableArea.Width * 0.5 + PlayableArea.Left);
+            RelicOozePopupButton2.Y = (int)(PlayableArea.Height * 0.5 + PlayableArea.Top);
+
+            
+              //Check for Steam window
+              //Background functionality works with Steam window
+              //Still seems to be a few issues - if you move the window after detecting it,
+              //it throws an OutOfMemory error
+              WindowHandle = Imports.FindWindow(null, "Clicker Heroes");
             /*
              * Not sure how to make this effective, while it would be nice to be able to have a chrome
              * window in the background, not sure how to make it work effectivily
@@ -998,6 +1040,20 @@ namespace clickerheroes.autoplayer
 
                 return true;
             }
+        }
+
+        public static bool IsRelicOozePopupActive()
+        {
+            Rectangle c = new Rectangle(RelicOozeIdentifier.X - CandyWidth / 4, RelicOozeIdentifier.Y - CandyHeight / 4, CandyWidth/2, CandyHeight/2);
+
+            using (Bitmap bitmap = GetImage(c))
+            {
+                return OCREngine.GetBlobDensity(bitmap, new Rectangle(0, 0, bitmap.Width - 1, bitmap.Height - 1), new Color[] {
+                        Color.FromArgb(255, 103, 52, 255)}) > 0.1;
+              
+            }
+            
+
         }
 
         //From neilmcguire on github; https://github.com/neilmcguire/ClickerHeroes_AutoPlayer/blob/Steam/GameEngine.cs
